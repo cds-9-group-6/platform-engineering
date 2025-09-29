@@ -1,19 +1,19 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: ollama_both
+  name: ollama-both
   namespace: sasya-chikitsa
   labels:
-    app: ollama_both
+    app: ollama-both
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ollama_both
+      app: ollama-both
   template:
     metadata:
       labels:
-        app: ollama_both
+        app: ollama-both
     spec:
       tolerations:
         - key: odh-notebook
@@ -38,7 +38,7 @@ spec:
             initialDelaySeconds: 30
             periodSeconds: 60
           terminationMessagePath: /dev/termination-log
-          name: ollama_both
+          name: ollama-both
           livenessProbe:
             httpGet:
               path: /api/tags

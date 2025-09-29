@@ -5,8 +5,8 @@ metadata:
     haproxy.router.openshift.io/timeout: 300s
     # haproxy.router.openshift.io/server-timeout: 300s
   labels:
-    app: ollama_both
-  name: ollama_both
+    app: ollama-both
+  name: ollama-both
   namespace: sasya-chikitsa
 spec:
   # host: engine-sasya-chikitsa.apps.cluster-mx6z7.mx6z7.sandbox5315.opentlc.com
@@ -17,6 +17,6 @@ spec:
   #   termination: edge
   to:
     kind: Service
-    name: ollama_both
+    name: ollama-both
     weight: 100
   wildcardPolicy: None
