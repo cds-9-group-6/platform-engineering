@@ -6,11 +6,6 @@ NAME             DISPLAY NAME   STATUS
 sasya-chikitsa                  Active
 
 
-cd ../platform-engineering/
-total 24
--rw-r--r--@ 1 rajranja  staff   1.1K 20 Aug 15:19 deployment.yaml
--rw-r--r--@ 1 rajranja  staff   591B 20 Aug 15:27 route.yaml
--rw-r--r--@ 1 rajranja  staff   568B 20 Aug 15:23 service.yaml
 
 
 ❯ oc apply -f .
