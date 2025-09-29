@@ -38,6 +38,12 @@ spec:
               value: 'sentence-transformers/multi-qa-MiniLM-L6-cos-v1'
             - name: OLLAMA_MODEL
               value: 'llama3.1:8b'
+            - name: 
+              value:
+            - name:
+              value:
+            - name:
+              value:
           resources: {}
             # requests:
             #     memory: "16Gi"
