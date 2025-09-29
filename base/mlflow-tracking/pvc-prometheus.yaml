@@ -2,7 +2,7 @@
 # kind: PersistentVolumeClaim
 # metadata:
 #   name: prometheus
-#   namespace: sasya-chikitsa
+#   namespace: sasya-arogya
 #   labels:
 #     app: mlflow-server
 #     app.kubernetes.io/component: mlflow-server

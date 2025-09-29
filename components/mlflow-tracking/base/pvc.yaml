@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mlruns
+  labels:
+    app: mlflow-server
+    app.kubernetes.io/component: mlflow-server
+    app.kubernetes.io/instance: mlflow-server
+    app.kubernetes.io/name: mlflow-server
+    app.kubernetes.io/part-of: sasya-arogya
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: gp3-csi

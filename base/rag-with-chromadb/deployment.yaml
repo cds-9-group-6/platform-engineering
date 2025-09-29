@@ -5,7 +5,7 @@ metadata:
     alpha.image.policy.openshift.io/resolve-names: '*'
     app.openshift.io/route-disabled: "false"
     deployment.kubernetes.io/revision: "2"
-    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"rag-with-ollama-fastapi-amd64:v1","namespace":"sasya-chikitsa"},"fieldPath":"spec.template.spec.containers[?(@.name==\"rag-with-ollama-fastapi-amd64\")].image","paused":false}]'
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"rag-with-ollama-fastapi-amd64:v1","namespace":"sasya-arogya"},"fieldPath":"spec.template.spec.containers[?(@.name==\"rag-with-ollama-fastapi-amd64\")].image","paused":false}]'
     openshift.io/generated-by: OpenShiftWebConsole
   creationTimestamp: "2025-09-06T09:31:43Z"
   generation: 2
@@ -16,9 +16,9 @@ metadata:
     app.kubernetes.io/name: rag-with-ollama-fastapi-amd64
     app.kubernetes.io/part-of: rag-with-ollama-fastapi-amd64-app
     app.openshift.io/runtime: python
-    app.openshift.io/runtime-namespace: sasya-chikitsa
+    app.openshift.io/runtime-namespace: sasya-arogya
   name: rag-with-ollama-fastapi-amd64
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
   resourceVersion: "4982768"
   uid: af840338-c189-4d61-b4ef-3264965c8a4a
 spec:
@@ -45,8 +45,8 @@ spec:
       containers:
       - env:
         - name: OLLAMA_HOST
-          value: http://llama318b.sasya-chikitsa.svc.cluster.local:11434
-        image: image-registry.openshift-image-registry.svc:5000/sasya-chikitsa/rag-with-ollama-fastapi-amd64@sha256:2ac5a39c6d91989096a1c10e32b1e9c96b6364e1907cade46200e742b8508a4e
+          value: http://llama318b.sasya-arogya.svc.cluster.local:11434
+        image: image-registry.openshift-image-registry.svc:5000/sasya-arogya/rag-with-ollama-fastapi-amd64@sha256:2ac5a39c6d91989096a1c10e32b1e9c96b6364e1907cade46200e742b8508a4e
         imagePullPolicy: IfNotPresent
         name: rag-with-ollama-fastapi-amd64
         ports:

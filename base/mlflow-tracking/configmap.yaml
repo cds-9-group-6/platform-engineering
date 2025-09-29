@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mlflow-config
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
   labels:
     app: mlflow-server
     app.kubernetes.io/component: mlflow-server

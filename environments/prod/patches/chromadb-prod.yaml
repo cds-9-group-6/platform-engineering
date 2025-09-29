@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chromadb
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+      - name: chromadb
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "2"

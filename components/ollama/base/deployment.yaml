@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+  labels:
+    app: ollama
+    app.kubernetes.io/component: ollama
+    app.kubernetes.io/instance: ollama
+    app.kubernetes.io/name: ollama
+    app.kubernetes.io/part-of: sasya-arogya
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+        app.kubernetes.io/component: ollama
+        app.kubernetes.io/name: ollama
+        deployment: ollama
+    spec:
+      securityContext:
+        runAsUser: 0
+      containers:
+        - name: ollama
+          image: quay.io/rajivranjan/ollama-multi-model:linux-amd64-v1.0
+          securityContext:
+            runAsUser: 0
+          ports:
+            - containerPort: 11434
+              protocol: TCP
+          resources:
+            requests:
+              cpu: '1'
+              memory: 2Gi
+            limits:
+              cpu: '4'
+              memory: 8Gi
+          readinessProbe:
+            httpGet:
+              path: /api/tags
+              port: 11434
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api/tags
+              port: 11434
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            timeoutSeconds: 10
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 0
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 1200

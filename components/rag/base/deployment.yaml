@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag
+  labels:
+    app: rag
+    app.kubernetes.io/component: rag
+    app.kubernetes.io/instance: rag
+    app.kubernetes.io/name: rag
+    app.kubernetes.io/part-of: sasya-arogya
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rag
+  template:
+    metadata:
+      labels:
+        app: rag
+        app.kubernetes.io/component: rag
+        app.kubernetes.io/name: rag
+        deployment: rag
+    spec:
+      securityContext:
+        runAsUser: 0
+      containers:
+        - name: rag
+          image: quay.io/rajivranjan/rag-with-chromadb:amd64-v1
+          securityContext:
+            runAsUser: 0
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: CHROMADB_HOST
+              value: http://chromadb.sasya-arogya.svc.cluster.local:8000
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "250m"
+            limits:
+              memory: "2Gi"
+              cpu: "1"
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600

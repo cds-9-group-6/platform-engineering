@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: rag-base
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - route.yaml
+
+commonLabels:
+  app.kubernetes.io/version: v1.0.0
+  app.kubernetes.io/managed-by: kustomize
+
+images:
+  - name: quay.io/rajivranjan/rag-with-chromadb
+    newTag: amd64-v1

@@ -4,7 +4,7 @@ metadata:
   labels:
     app: ollama-both
   name: ollama-both
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:

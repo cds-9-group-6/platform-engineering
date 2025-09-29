@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlflow-server
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: mlflow-server
+        resources:
+          requests:
+            cpu: 250m
+            memory: 500Mi
+          limits:
+            cpu: 1
+            memory: 2Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mlruns
+spec:
+  resources:
+    requests:
+      storage: 1Gi  # Smaller storage for dev

@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sasya-arogya-app-of-apps
+  namespace: openshift-gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/name: sasya-arogya-app-of-apps
+    app.kubernetes.io/part-of: sasya-arogya-platform
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    directory:
+      recurse: true
+    path: argocd/applications/
+    repoURL: 'https://github.com/cds-9-group-6/platform-engineering.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

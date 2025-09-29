@@ -2,7 +2,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: engine
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
   labels:
     app: engine
     app.kubernetes.io/component: engine
@@ -13,7 +13,7 @@ metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 5m
 spec:
-  # host: engine-sasya-chikitsa.apps.cluster-mx6z7.mx6z7.sandbox5315.opentlc.com
+  # host: engine-sasya-arogya.apps.cluster-mx6z7.mx6z7.sandbox5315.opentlc.com
   port:
     targetPort: 8080-tcp
   # tls:

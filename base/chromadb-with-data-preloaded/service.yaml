@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/part-of: engine
     app.openshift.io/runtime-version: v1
   name: chromadb-with-data-amd64
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
 spec:
   internalTrafficPolicy: Cluster
   ports:

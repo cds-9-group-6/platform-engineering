@@ -2,7 +2,7 @@
 # kind: PersistentVolumeClaim
 # metadata:
 #   name: ollama-data-pvc
-#   namespace: sasya-chikitsa
+#   namespace: sasya-arogya
 #   labels:
 #     app: llama318b
 # spec:

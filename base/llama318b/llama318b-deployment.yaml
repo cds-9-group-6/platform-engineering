@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: llama318b
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
   labels:
     app: llama318b
 spec:

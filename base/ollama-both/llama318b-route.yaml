@@ -7,9 +7,9 @@ metadata:
   labels:
     app: ollama-both
   name: ollama-both
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
 spec:
-  # host: engine-sasya-chikitsa.apps.cluster-mx6z7.mx6z7.sandbox5315.opentlc.com
+  # host: engine-sasya-arogya.apps.cluster-mx6z7.mx6z7.sandbox5315.opentlc.com
   port:
     targetPort: 11434-tcp
   # tls:

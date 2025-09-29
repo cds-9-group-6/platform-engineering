@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sasya-arogya-rag
+  namespace: openshift-gitops
+  labels:
+    component: rag
+    environment: prod
+spec:
+  destination:
+    namespace: sasya-arogya
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: components/rag/base
+    repoURL: 'https://github.com/cds-9-group-6/platform-engineering.git'
+    targetRevision: HEAD
+    kustomize:
+      images:
+        - quay.io/rajivranjan/rag-with-chromadb:amd64-v1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

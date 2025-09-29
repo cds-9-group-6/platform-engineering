@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sasya-chikitsa-argo-apps-chromadb-with-preloaded-data
+  name: sasya-arogya-argo-apps-chromadb-with-preloaded-data
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: sasya-chikitsa
+    namespace: sasya-arogya
     server: 'https://kubernetes.default.svc'
   project: default
   source:

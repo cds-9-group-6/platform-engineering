@@ -12,7 +12,7 @@ metadata:
     app.kubernetes.io/part-of: rag-with-ollama-fastapi-amd64-app
     app.openshift.io/runtime-version: v1
   name: rag-with-ollama-fastapi-amd64
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
   resourceVersion: "4367495"
   uid: bc89e177-c697-4410-b1e7-06bdedb9ddb2
 spec:

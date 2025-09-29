@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sasya-arogya
+  labels:
+    name: sasya-arogya
+    app.kubernetes.io/name: sasya-arogya
+    app.kubernetes.io/part-of: sasya-arogya-platform

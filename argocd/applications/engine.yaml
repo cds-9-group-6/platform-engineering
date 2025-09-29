@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sasya-arogya-engine
+  namespace: openshift-gitops
+  labels:
+    component: engine
+    environment: prod
+spec:
+  destination:
+    namespace: sasya-arogya
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: components/engine/base
+    repoURL: 'https://github.com/cds-9-group-6/platform-engineering.git'
+    targetRevision: HEAD
+    kustomize:
+      images:
+        - quay.io/rajivranjan/engine:amd64-v5
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

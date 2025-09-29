@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+spec:
+  replicas: 2
+  template:
+    spec:
+      tolerations:
+        - key: odh-notebook
+          operator: Equal
+          value: 'true'
+          effect: NoSchedule
+        - key: nvidia.com/gpu
+          operator: Exists
+          effect: NoSchedule
+      containers:
+      - name: ollama
+        resources:
+          requests:
+            cpu: '4'
+            memory: 8Gi
+            nvidia.com/gpu: '1'
+          limits:
+            cpu: '16'
+            memory: 32Gi
+            nvidia.com/gpu: '1'

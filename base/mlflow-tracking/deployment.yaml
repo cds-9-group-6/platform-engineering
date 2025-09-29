@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mlflow-server-amd64
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
   labels:
     app: mlflow-server
     app.kubernetes.io/component: mlflow-server

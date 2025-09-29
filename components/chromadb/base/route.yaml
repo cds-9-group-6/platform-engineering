@@ -1,0 +1,21 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: chromadb
+  labels:
+    app: chromadb
+    app.kubernetes.io/component: chromadb
+    app.kubernetes.io/instance: chromadb
+    app.kubernetes.io/name: chromadb
+    app.kubernetes.io/part-of: sasya-arogya
+spec:
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: chromadb
+    weight: 100
+  wildcardPolicy: None

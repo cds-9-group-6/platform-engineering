@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: engine
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
   labels:
     app: engine
     app.kubernetes.io/component: engine
@@ -33,7 +33,7 @@ spec:
               protocol: TCP
           env:
             - name: OLLAMA_HOST
-              value: 'http://llama318b.sasya-chikitsa.svc.cluster.local:11434'
+              value: 'http://llama318b.sasya-arogya.svc.cluster.local:11434'
             - name: HUB_MODEL_ID
               value: 'sentence-transformers/multi-qa-MiniLM-L6-cos-v1'
             - name: OLLAMA_MODEL

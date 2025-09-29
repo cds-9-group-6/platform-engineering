@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mlflow-config
+  labels:
+    app: mlflow-server
+    app.kubernetes.io/component: mlflow-server
+    app.kubernetes.io/instance: mlflow-server
+    app.kubernetes.io/name: mlflow-server
+    app.kubernetes.io/part-of: sasya-arogya
+data:
+  MLFLOW_BACKEND_STORE_URI: "file:///mlruns"
+  MLFLOW_EXPOSE_PROMETHEUS: "file:///prometheus"
+  MLFLOW_ARTIFACTS_DESTINATION: "file:///mlartifacts"

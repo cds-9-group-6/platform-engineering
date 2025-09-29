@@ -9,9 +9,9 @@ metadata:
     app.kubernetes.io/part-of: engine
     app.openshift.io/runtime-version: v1
   name: chromadb-with-data-amd64
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
 spec:
-  host: chromadb-with-data-amd64-sasya-chikitsa.apps.cluster-mx6z7.mx6z7.sandbox5315.opentlc.com
+  host: chromadb-with-data-amd64-sasya-arogya.apps.cluster-mx6z7.mx6z7.sandbox5315.opentlc.com
   port:
     targetPort: 8000-tcp
   to:

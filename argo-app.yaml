@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sasya-chikitsa-argo-apps-all
+  name: sasya-arogya-argo-apps-all
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: sasya-chikitsa
+    namespace: sasya-arogya
     server: 'https://kubernetes.default.svc'
   project: default
   source:
@@ -28,7 +28,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: argocd-admin-binding
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

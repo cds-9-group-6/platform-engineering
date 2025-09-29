@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: engine
+  labels:
+    app: engine
+    app.kubernetes.io/component: engine
+    app.kubernetes.io/instance: engine
+    app.kubernetes.io/name: engine
+    app.kubernetes.io/part-of: sasya-arogya
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+spec:
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: engine
+    weight: 100
+  wildcardPolicy: None

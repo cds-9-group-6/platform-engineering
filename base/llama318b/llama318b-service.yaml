@@ -4,7 +4,7 @@ metadata:
   labels:
     app: llama318b
   name: llama318b
-  namespace: sasya-chikitsa
+  namespace: sasya-arogya
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:

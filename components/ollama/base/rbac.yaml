@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ollama-privileged-scc
+  labels:
+    app: ollama
+    app.kubernetes.io/component: ollama
+    app.kubernetes.io/instance: ollama
+    app.kubernetes.io/name: ollama
+    app.kubernetes.io/part-of: sasya-arogya
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:openshift:scc:privileged
+subjects:
+- kind: ServiceAccount
+  name: default

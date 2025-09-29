@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ollama
+  labels:
+    app: ollama
+    app.kubernetes.io/component: ollama
+    app.kubernetes.io/instance: ollama
+    app.kubernetes.io/name: ollama
+    app.kubernetes.io/part-of: sasya-arogya
+  annotations:
+    haproxy.router.openshift.io/timeout: 300s
+spec:
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: ollama
+    weight: 100
+  wildcardPolicy: None

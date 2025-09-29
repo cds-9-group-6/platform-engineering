@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: sasya-arogya-dev
+
+namespace: sasya-arogya
+
+resources:
+  - ../../base/common
+  - ../../components/engine/base
+  - ../../components/ollama/base
+  - ../../components/chromadb/base
+  - ../../components/mlflow-tracking/base
+  - ../../components/rag/base
+
+commonLabels:
+  environment: dev
+  app.kubernetes.io/instance: sasya-arogya-dev
+
+patchesStrategicMerge:
+  - patches/engine-dev.yaml
+  - patches/ollama-dev.yaml
+  - patches/chromadb-dev.yaml
+  - patches/mlflow-dev.yaml
+  - patches/rag-dev.yaml
+
+images:
+  - name: quay.io/rajivranjan/engine
+    newTag: amd64-v5-dev
+  - name: quay.io/rajivranjan/ollama-multi-model
+    newTag: linux-amd64-v1.0-dev
+  - name: quay.io/rajivranjan/chromadb-with-data-amd64
+    newTag: v1-dev
+  - name: quay.io/rajivranjan/mlflow-server
+    newTag: amd64-v1-dev
+  - name: quay.io/rajivranjan/rag-with-chromadb
+    newTag: amd64-v1-dev
