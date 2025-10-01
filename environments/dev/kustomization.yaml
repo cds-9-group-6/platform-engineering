@@ -12,7 +12,7 @@ resources:
   - ../../components/ollama/base
   - ../../components/chromadb/base
   - ../../components/mlflow-tracking/base
-  - ../../components/rag/base
+  - ../../components/prescription/base
 
 commonLabels:
   environment: dev
@@ -23,7 +23,9 @@ patchesStrategicMerge:
   - patches/ollama-dev.yaml
   - patches/chromadb-dev.yaml
   - patches/mlflow-dev.yaml
-  - patches/rag-dev.yaml
+  - patches/prescription-dev.yaml
+  - patches/engine-config-dev.yaml
+  - patches/engine-session-storage-pvc-dev.yaml
 
 images:
   - name: quay.io/rajivranjan/engine
@@ -31,8 +33,8 @@ images:
   - name: quay.io/rajivranjan/ollama-multi-model
     newTag: linux-amd64-v1.0
   - name: quay.io/rajivranjan/chromadb-with-data-amd64
-    newTag: v1-dev
+    newTag: v1
   - name: quay.io/rajivranjan/mlflow-server
-    newTag: amd64-v1-dev
-  - name: quay.io/rajivranjan/rag-with-chromadb
-    newTag: amd64-v1-dev
+    newTag: amd64-v1
+  - name: quay.io/rajivranjan/prescription
+    newTag: amd64-v1.1

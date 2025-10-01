@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: engine-config
+  labels:
+    app: engine
+    app.kubernetes.io/component: engine
+    app.kubernetes.io/instance: engine
+    app.kubernetes.io/name: engine
+    app.kubernetes.io/part-of: sasya-arogya
+data:
+  OLLAMA_HOST: "http://ollama.sasya-arogya.svc.cluster.local:11434"
+  OLLAMA_MODEL: "llama3.1:8b"
+  LLAVA_TIMEOUT: "120"
+  PRESCRIPTION_ENGINE_URL: "http://prescription.sasya-arogya.svc.cluster.local:8081"
+  SESSION_STORAGE_DIR: "/app/sessions"
+  MLFLOW_TRACKING_URI: "http://mlflow-server.sasya-arogya.svc.cluster.local:5001"
+  MLFLOW_EXPERIMENT_NAME: "plant_disease_classification"
+  MLFLOW_ARTIFACT_LOCATION: "/app/mlflow_artifacts"
+  MLFLOW_REGISTRY_URI: "http://mlflow-server.sasya-arogya.svc.cluster.local:5001"

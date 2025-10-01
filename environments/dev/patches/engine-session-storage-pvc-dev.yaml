@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: engine-session-storage
+  labels:
+    app: engine
+    app.kubernetes.io/component: engine
+    app.kubernetes.io/instance: engine
+    app.kubernetes.io/name: engine
+    app.kubernetes.io/part-of: sasya-arogya
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: gp3-csi

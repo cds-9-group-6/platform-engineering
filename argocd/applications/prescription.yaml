@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sasya-arogya-rag
+  name: sasya-arogya-prescription
   namespace: openshift-gitops
   labels:
-    component: rag
+    component: prescription
     environment: prod
 spec:
   destination:
@@ -12,12 +12,12 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: components/rag/base
+    path: components/prescription/base
     repoURL: 'https://github.com/cds-9-group-6/platform-engineering.git'
     targetRevision: HEAD
     kustomize:
       images:
-        - quay.io/rajivranjan/rag-with-chromadb:amd64-v1
+        - quay.io/rajivranjan/prescription:amd64-v1.1
   syncPolicy:
     automated:
       prune: true

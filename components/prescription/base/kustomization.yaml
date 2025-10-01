@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 metadata:
-  name: rag-base
+  name: prescription-base
 
 resources:
   - deployment.yaml
@@ -10,9 +10,9 @@ resources:
   - route.yaml
 
 commonLabels:
-  app.kubernetes.io/version: v1.0.0
+  app.kubernetes.io/version: v1.1.0
   app.kubernetes.io/managed-by: kustomize
 
 images:
-  - name: quay.io/rajivranjan/rag-with-chromadb
-    newTag: amd64-v1
+  - name: quay.io/rajivranjan/prescription
+    newTag: amd64-v1.1

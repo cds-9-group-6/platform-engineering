@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prescription
+  labels:
+    app: prescription
+    app.kubernetes.io/component: prescription
+    app.kubernetes.io/instance: prescription
+    app.kubernetes.io/name: prescription
+    app.kubernetes.io/part-of: sasya-arogya
+spec:
+  ports:
+  - name: http
+    port: 8081
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    app: prescription
+  type: ClusterIP

@@ -33,12 +33,14 @@ spec:
             - containerPort: 8080
               protocol: TCP
           env:
-            - name: OLLAMA_HOST
-              value: http://ollama.sasya-arogya.svc.cluster.local:11434
             - name: HUB_MODEL_ID
               value: sentence-transformers/multi-qa-MiniLM-L6-cos-v1
-            - name: OLLAMA_MODEL
-              value: llama3.1:8b
+          envFrom:
+            - configMapRef:
+                name: engine-config
+          volumeMounts:
+            - name: session-storage
+              mountPath: /app/sessions
           resources:
             requests:
               memory: "2Gi"
@@ -55,10 +57,14 @@ spec:
             periodSeconds: 30
           readinessProbe:
             httpGet:
-              path: /ready
+              path: /health
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
+      volumes:
+        - name: session-storage
+          persistentVolumeClaim:
+            claimName: engine-session-storage
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
