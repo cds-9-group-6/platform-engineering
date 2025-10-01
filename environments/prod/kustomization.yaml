@@ -15,6 +15,7 @@ resources:
   - ../../components/prescription/base
   - ../../components/otel-collector/base
   - ../../components/prometheus/base
+  - ../../components/grafana/base
   - patches/engine-session-storage-pvc-prod.yaml
 
 commonLabels:
@@ -29,6 +30,7 @@ patchesStrategicMerge:
   - patches/prescription-prod.yaml
   - patches/otel-collector-prod.yaml
   - patches/prometheus-prod.yaml
+  - patches/grafana-prod.yaml
 
 images:
   - name: quay.io/rajivranjan/engine
@@ -44,4 +46,6 @@ images:
   - name: otel/opentelemetry-collector-contrib
     newTag: latest
   - name: prom/prometheus
+    newTag: latest
+  - name: grafana/grafana-oss
     newTag: latest

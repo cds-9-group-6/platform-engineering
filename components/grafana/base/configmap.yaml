@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+  labels:
+    app: grafana
+    app.kubernetes.io/component: grafana
+    app.kubernetes.io/instance: grafana
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/part-of: sasya-arogya
+data:
+  grafana.ini: |
+    # This is a minimal configuration file.
+    # You can find all possible options in the official Grafana documentation.
+    [server]
+    # The full URL used to access Grafana from a browser
+    root_url = %(protocol)s://%(domain)s:%(http_port)s/
+    
+    [auth.anonymous]
+    # Set to true to enable anonymous access
+    enabled = true
+    # Specify organization name for anonymous users
+    org_name = Main Org.
+    # Specify role for anonymous users
+    org_role = Viewer
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasource
+  labels:
+    app: grafana
+    app.kubernetes.io/component: grafana
+    app.kubernetes.io/instance: grafana
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/part-of: sasya-arogya
+data:
+  prometheus-datasource.yml: |
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        url: http://prometheus.sasya-arogya.svc.cluster.local:9090 # OpenShift internal service
+        isDefault: true
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards-config
+  labels:
+    app: grafana
+    app.kubernetes.io/component: grafana
+    app.kubernetes.io/instance: grafana
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/part-of: sasya-arogya
+data:
+  main-dashboard.yml: |
+    apiVersion: 1
+    providers:
+      - name: 'default'
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /etc/grafana/provisioning/dashboards
