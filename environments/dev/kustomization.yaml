@@ -14,6 +14,7 @@ resources:
   - ../../components/mlflow-tracking/base
   - ../../components/prescription/base
   - ../../components/otel-collector/base
+  - ../../components/prometheus/base
   - patches/engine-session-storage-pvc-dev.yaml
 
 commonLabels:
@@ -27,6 +28,7 @@ patchesStrategicMerge:
   - patches/mlflow-dev.yaml
   - patches/prescription-dev.yaml
   - patches/otel-collector-dev.yaml
+  - patches/prometheus-dev.yaml
 
 images:
   - name: quay.io/rajivranjan/engine
@@ -40,4 +42,6 @@ images:
   - name: quay.io/rajivranjan/prescription
     newTag: amd64-v1.1
   - name: otel/opentelemetry-collector-contrib
+    newTag: latest
+  - name: prom/prometheus
     newTag: latest

@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: prometheus
+  labels:
+    app: prometheus
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/part-of: sasya-arogya
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: prometheus
+    weight: 100
+  wildcardPolicy: None

@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sasya-arogya-prometheus
+  namespace: openshift-gitops
+  labels:
+    component: prometheus
+    environment: prod
+spec:
+  destination:
+    namespace: sasya-arogya
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: components/prometheus/base
+    repoURL: 'https://github.com/cds-9-group-6/platform-engineering.git'
+    targetRevision: HEAD
+    kustomize:
+      images:
+        - prom/prometheus:latest
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
