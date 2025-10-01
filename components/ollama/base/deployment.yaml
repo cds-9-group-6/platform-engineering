@@ -33,11 +33,11 @@ spec:
               protocol: TCP
           resources:
             requests:
-              cpu: '1'
-              memory: 2Gi
+              cpu: '6'
+              memory: 14Gi
             limits:
-              cpu: '4'
-              memory: 8Gi
+              cpu: '8'
+              memory: 20Gi
           readinessProbe:
             httpGet:
               path: /api/tags
