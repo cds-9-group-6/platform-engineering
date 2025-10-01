@@ -10,11 +10,11 @@ spec:
       - name: prescription
         resources:
           requests:
-            memory: "1Gi"
-            cpu: "250m"
-          limits:
             memory: "2Gi"
-            cpu: "1"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "2"
         env:
         - name: LOG_LEVEL
           value: "DEBUG"
