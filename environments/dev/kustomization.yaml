@@ -13,6 +13,8 @@ resources:
   - ../../components/chromadb/base
   - ../../components/mlflow-tracking/base
   - ../../components/prescription/base
+  - patches/engine-config-dev.yaml
+  - patches/engine-session-storage-pvc-dev.yaml
 
 commonLabels:
   environment: dev
@@ -24,8 +26,6 @@ patchesStrategicMerge:
   - patches/chromadb-dev.yaml
   - patches/mlflow-dev.yaml
   - patches/prescription-dev.yaml
-  - patches/engine-config-dev.yaml
-  - patches/engine-session-storage-pvc-dev.yaml
 
 images:
   - name: quay.io/rajivranjan/engine
