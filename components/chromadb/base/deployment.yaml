@@ -39,21 +39,20 @@ spec:
           limits:
             memory: "2Gi"
             cpu: "1"
-        livenessProbe:
-          httpGet:
-            path: /api/v1
-            port: 8000
-          initialDelaySeconds: 5
-          periodSeconds: 5
         readinessProbe:
-          httpGet:
-            path: /api/v1
+          tcpSocket:
             port: 8000
-          initialDelaySeconds: 5
-          periodSeconds: 5
+          failureThreshold: 3
+          timeoutSeconds: 30
+          periodSeconds: 60
+        livenessProbe:
+          tcpSocket:
+            port: 8000
+          failureThreshold: 3
+          timeoutSeconds: 30
+          periodSeconds: 60
         startupProbe:
-          httpGet:
-            path: /api/v1
+          tcpSocket:
             port: 8000
           failureThreshold: 3
           periodSeconds: 60
