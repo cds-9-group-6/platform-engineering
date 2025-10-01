@@ -8,10 +8,10 @@ spec:
     spec:
       containers:
       - name: ollama
-        resources:
-          requests:
-            cpu: '500m'
-            memory: 1Gi
-          limits:
-            cpu: '2'
-            memory: 4Gi
+        resources: {}
+          # requests:
+          #   cpu: '500m'
+          #   memory: 1Gi
+          # limits:
+          #   cpu: '2'
+          #   memory: 4Gi
