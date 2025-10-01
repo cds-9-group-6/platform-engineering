@@ -41,16 +41,23 @@ spec:
             cpu: "1"
         livenessProbe:
           httpGet:
-            path: /api/v1/heartbeat
-            port: 8000
-          initialDelaySeconds: 30
-          periodSeconds: 30
-        readinessProbe:
-          httpGet:
-            path: /api/v1/heartbeat
+            path: /api/v1
             port: 8000
           initialDelaySeconds: 5
-          periodSeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /api/v1
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        startupProbe:
+          httpGet:
+            path: /api/v1
+            port: 8000
+          failureThreshold: 3
+          periodSeconds: 60
+          initialDelaySeconds: 60
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
