@@ -3,18 +3,18 @@ kind: Deployment
 metadata:
   name: prescription
 spec:
-  replicas: 3
+  replicas: 2
   template:
     spec:
       containers:
       - name: prescription
         resources:
           requests:
-            memory: "2Gi"
-            cpu: "500m"
+            memory: "3Gi"
+            cpu: "1"
           limits:
-            memory: "4Gi"
-            cpu: "2"
+            memory: "6Gi"
+            cpu: "3"
         env:
         - name: LOG_LEVEL
           value: "INFO"

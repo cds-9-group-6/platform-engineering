@@ -43,24 +43,28 @@ spec:
               value: http://mlflow-server.sasya-arogya.svc.cluster.local:5001
           resources:
             requests:
-              memory: "1Gi"
-              cpu: "250m"
-            limits:
               memory: "2Gi"
-              cpu: "1"
+              cpu: "500m"
+            limits:
+              memory: "4Gi"
+              cpu: "2"
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
               path: /health
               port: 8081
-            initialDelaySeconds: 30
+            initialDelaySeconds: 180
             periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /health
               port: 8081
-            initialDelaySeconds: 5
-            periodSeconds: 10
+            initialDelaySeconds: 120
+            periodSeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 5
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
