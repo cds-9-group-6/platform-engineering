@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/name: engine
     app.kubernetes.io/part-of: sasya-arogya
 data:
-  HUB_MODEL_ID: "sentence-transformers/multi-qa-MiniLM-L6-cos-v1"
+  # HUB_MODEL_ID: "sentence-transformers/multi-qa-MiniLM-L6-cos-v1"
   OLLAMA_HOST: "http://ollama.sasya-arogya.svc.cluster.local:11434"
   OLLAMA_MODEL: "llama3.1:8b"
   LLAVA_TIMEOUT: "120"
