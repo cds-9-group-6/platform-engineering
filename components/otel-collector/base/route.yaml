@@ -1,0 +1,37 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: otel-collector-prometheus
+  labels:
+    app: otel-collector
+    app.kubernetes.io/component: otel-collector
+    app.kubernetes.io/instance: otel-collector
+    app.kubernetes.io/name: otel-collector
+    app.kubernetes.io/part-of: sasya-arogya
+spec:
+  port:
+    targetPort: prometheus
+  to:
+    kind: Service
+    name: otel-collector
+    weight: 100
+  wildcardPolicy: None
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: otel-collector-otlp-http
+  labels:
+    app: otel-collector
+    app.kubernetes.io/component: otel-collector
+    app.kubernetes.io/instance: otel-collector
+    app.kubernetes.io/name: otel-collector
+    app.kubernetes.io/part-of: sasya-arogya
+spec:
+  port:
+    targetPort: otlp-http
+  to:
+    kind: Service
+    name: otel-collector
+    weight: 100
+  wildcardPolicy: None

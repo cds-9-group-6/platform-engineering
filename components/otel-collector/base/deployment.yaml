@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-collector
+  labels:
+    app: otel-collector
+    app.kubernetes.io/component: otel-collector
+    app.kubernetes.io/instance: otel-collector
+    app.kubernetes.io/name: otel-collector
+    app.kubernetes.io/part-of: sasya-arogya
+    app.openshift.io/runtime: go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otel-collector
+  template:
+    metadata:
+      labels:
+        app: otel-collector
+        app.kubernetes.io/component: otel-collector
+        app.kubernetes.io/name: otel-collector
+        deployment: otel-collector
+    spec:
+      containers:
+        - name: otel-collector
+          image: otel/opentelemetry-collector-contrib:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4317
+              protocol: TCP
+              name: otlp-grpc
+            - containerPort: 4318
+              protocol: TCP
+              name: otlp-http
+            - containerPort: 8889
+              protocol: TCP
+              name: prometheus
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/otelcol-contrib
+              readOnly: true
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8889
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8889
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 1
+              memory: 1Gi
+      volumes:
+        - name: config-volume
+          configMap:
+            name: otel-collector-config
+            items:
+              - key: config.yaml
+                path: config.yaml
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
