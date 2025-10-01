@@ -38,13 +38,13 @@ spec:
           volumeMounts:
             - name: session-storage
               mountPath: /app/sessions
-          resources:
-            requests:
-              memory: "2Gi"
-              cpu: "500m"
-            limits:
-              memory: "4Gi"
-              cpu: "2"
+          resources: {}
+            # requests:
+            #   memory: "2Gi"
+            #   cpu: "500m"
+            # limits:
+            #   memory: "4Gi"
+            #   cpu: "2"
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
