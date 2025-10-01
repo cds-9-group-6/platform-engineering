@@ -9,6 +9,26 @@ metadata:
     app.kubernetes.io/name: mlflow-server
     app.kubernetes.io/part-of: sasya-arogya
 data:
+  # MLflow Core Configuration
   MLFLOW_BACKEND_STORE_URI: "file:///mlruns"
   MLFLOW_EXPOSE_PROMETHEUS: "file:///prometheus"
   MLFLOW_ARTIFACTS_DESTINATION: "file:///mlartifacts"
+  MLFLOW_TRACKING_URI: "http://0.0.0.0:5001/"
+  MLFLOW_EXPERIMENT_NAME: "llm_tracing_ollama"
+  MLFLOW_ACTIVE_MODEL_NAME: "llama318b_model"
+  
+  # MLflow Async Logging Configuration (for production)
+  MLFLOW_ENABLE_ASYNC_TRACE_LOGGING: "true"
+  MLFLOW_ASYNC_TRACE_LOGGING_MAX_WORKERS: "10"
+  MLFLOW_ASYNC_TRACE_LOGGING_MAX_QUEUE_SIZE: "1000"
+  
+  # MLflow Trace Sampling Configuration
+  MLFLOW_TRACE_SAMPLING_RATIO: "1.0"
+  MLFLOW_TRACE_ENABLE_OTLP_DUAL_EXPORT: "true"
+  
+  # OpenTelemetry Configuration
+  OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: "http://0.0.0.0:4318/v1/traces"
+  OTEL_EXPORTER_OTLP_TRACES_PROTOCOL: "http/protobuf"
+  OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: "http://0.0.0.0:4318/v1/metrics"
+  OTEL_EXPORTER_OTLP_METRICS_PROTOCOL: "http/protobuf"
+  OTEL_METRIC_EXPORT_INTERVAL: "10000"
