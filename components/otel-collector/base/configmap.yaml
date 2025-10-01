@@ -27,11 +27,16 @@ data:
       # UPDATED: The 'logging' exporter is now called 'debug'
       debug:
         verbosity: detailed # Use 'detailed' for max output, similar to the old 'debug' loglevel
+    extensions:
+      health_check:
+        endpoint: 0.0.0.0:13133
+        path: /healthz
 
     processors:
       batch:
 
     service:
+      extensions: [health_check]
       pipelines:
         metrics:
           receivers: [otlp]
