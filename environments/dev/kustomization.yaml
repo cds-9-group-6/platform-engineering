@@ -13,7 +13,6 @@ resources:
   - ../../components/chromadb/base
   - ../../components/mlflow-tracking/base
   - ../../components/prescription/base
-  - patches/engine-config-dev.yaml
   - patches/engine-session-storage-pvc-dev.yaml
 
 commonLabels:

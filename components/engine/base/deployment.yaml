@@ -32,9 +32,6 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
-          env:
-            - name: HUB_MODEL_ID
-              value: sentence-transformers/multi-qa-MiniLM-L6-cos-v1
           envFrom:
             - configMapRef:
                 name: engine-config
