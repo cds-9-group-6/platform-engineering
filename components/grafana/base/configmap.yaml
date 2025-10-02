@@ -42,6 +42,7 @@ data:
         type: prometheus
         access: proxy
         url: http://prometheus.sasya-arogya.svc.cluster.local:9090 # OpenShift internal service
+        uid: prometheus
         isDefault: true
 ---
 apiVersion: v1
