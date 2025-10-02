@@ -31,13 +31,7 @@ spec:
           ports:
             - containerPort: 11434
               protocol: TCP
-          resources:
-            requests:
-              cpu: '6'
-              memory: 14Gi
-            limits:
-              cpu: '8'
-              memory: 20Gi
+          resources: {}
           readinessProbe:
             httpGet:
               path: /api/tags
