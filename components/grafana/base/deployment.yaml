@@ -49,16 +49,28 @@ spec:
             - name: grafana-dashboard-datascientists
               mountPath: /etc/grafana/provisioning/dashboards/datascientists
               readOnly: true
-            - name: grafana-dashboard-executive
-              mountPath: /etc/grafana/provisioning/dashboards/executive
-              readOnly: true
-          env:
-            - name: GF_SECURITY_ADMIN_USER
-              value: "admin"
-            - name: GF_SECURITY_ADMIN_PASSWORD
-              value: "admin"
-            - name: GF_INSTALL_PLUGINS
-              value: ""
+        - name: grafana-dashboard-executive
+          mountPath: /etc/grafana/provisioning/dashboards/executive
+          readOnly: true
+        - name: grafana-dashboard-engine-overview
+          mountPath: /etc/grafana/provisioning/dashboards/engine-overview
+          readOnly: true
+        - name: grafana-dashboard-intent-analytics
+          mountPath: /etc/grafana/provisioning/dashboards/intent-analytics
+          readOnly: true
+        - name: grafana-dashboard-langgraph-metrics
+          mountPath: /etc/grafana/provisioning/dashboards/langgraph-metrics
+          readOnly: true
+        - name: grafana-dashboard-ml-performance
+          mountPath: /etc/grafana/provisioning/dashboards/ml-performance
+          readOnly: true
+      env:
+        - name: GF_SECURITY_ADMIN_USER
+          value: "admin"
+        - name: GF_SECURITY_ADMIN_PASSWORD
+          value: "admin"
+        - name: GF_INSTALL_PLUGINS
+          value: ""
           livenessProbe:
             httpGet:
               path: /api/health
@@ -107,6 +119,18 @@ spec:
         - name: grafana-dashboard-executive
           configMap:
             name: grafana-dashboard-executive
+        - name: grafana-dashboard-engine-overview
+          configMap:
+            name: grafana-dashboard-engine-overview
+        - name: grafana-dashboard-intent-analytics
+          configMap:
+            name: grafana-dashboard-intent-analytics
+        - name: grafana-dashboard-langgraph-metrics
+          configMap:
+            name: grafana-dashboard-langgraph-metrics
+        - name: grafana-dashboard-ml-performance
+          configMap:
+            name: grafana-dashboard-ml-performance
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst

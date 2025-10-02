@@ -13,6 +13,10 @@ resources:
   - dashboard-aiops.yaml
   - dashboard-datascientists.yaml
   - dashboard-executive.yaml
+  - dashboard-engine-overview.yaml
+  - dashboard-intent-analytics.yaml
+  - dashboard-langgraph-metrics.yaml
+  - dashboard-ml-performance.yaml
 
 commonLabels:
   app.kubernetes.io/version: v1.0.0
