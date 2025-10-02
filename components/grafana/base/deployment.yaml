@@ -44,16 +44,13 @@ spec:
             - name: grafana-storage
               mountPath: /var/lib/grafana
             - name: grafana-dashboard-aiops
-              mountPath: /etc/grafana/provisioning/dashboards/aiops-dashboard.json
-              subPath: aiops-dashboard.json
+              mountPath: /etc/grafana/provisioning/dashboards/aiops
               readOnly: true
             - name: grafana-dashboard-datascientists
-              mountPath: /etc/grafana/provisioning/dashboards/datascientists-dashboard.json
-              subPath: datascientists-dashboard.json
+              mountPath: /etc/grafana/provisioning/dashboards/datascientists
               readOnly: true
             - name: grafana-dashboard-executive
-              mountPath: /etc/grafana/provisioning/dashboards/executive-dashboard.json
-              subPath: executive-dashboard.json
+              mountPath: /etc/grafana/provisioning/dashboards/executive
               readOnly: true
           env:
             - name: GF_SECURITY_ADMIN_USER
