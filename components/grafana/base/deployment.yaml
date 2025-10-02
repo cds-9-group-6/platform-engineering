@@ -43,6 +43,18 @@ spec:
               readOnly: true
             - name: grafana-storage
               mountPath: /var/lib/grafana
+            - name: grafana-dashboard-aiops
+              mountPath: /etc/grafana/provisioning/dashboards/aiops-dashboard.json
+              subPath: aiops-dashboard.json
+              readOnly: true
+            - name: grafana-dashboard-datascientists
+              mountPath: /etc/grafana/provisioning/dashboards/datascientists-dashboard.json
+              subPath: datascientists-dashboard.json
+              readOnly: true
+            - name: grafana-dashboard-executive
+              mountPath: /etc/grafana/provisioning/dashboards/executive-dashboard.json
+              subPath: executive-dashboard.json
+              readOnly: true
           env:
             - name: GF_SECURITY_ADMIN_USER
               value: "admin"
@@ -89,6 +101,15 @@ spec:
         - name: grafana-storage
           persistentVolumeClaim:
             claimName: grafana-storage
+        - name: grafana-dashboard-aiops
+          configMap:
+            name: grafana-dashboard-aiops
+        - name: grafana-dashboard-datascientists
+          configMap:
+            name: grafana-dashboard-datascientists
+        - name: grafana-dashboard-executive
+          configMap:
+            name: grafana-dashboard-executive
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst

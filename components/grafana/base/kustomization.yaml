@@ -10,6 +10,9 @@ resources:
   - route.yaml
   - configmap.yaml
   - pvc.yaml
+  - dashboard-aiops.yaml
+  - dashboard-datascientists.yaml
+  - dashboard-executive.yaml
 
 commonLabels:
   app.kubernetes.io/version: v1.0.0
