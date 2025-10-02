@@ -12,7 +12,8 @@ spec:
           value: 'true'
           effect: NoSchedule
         - key: nvidia.com/gpu
-          operator: Exists
+          operator: Equal
+          value: 'True'
           effect: NoSchedule
       containers:
       - name: ollama
