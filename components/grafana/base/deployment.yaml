@@ -49,21 +49,21 @@ spec:
             - name: grafana-dashboard-datascientists
               mountPath: /etc/grafana/provisioning/dashboards/datascientists
               readOnly: true
-        - name: grafana-dashboard-executive
-          mountPath: /etc/grafana/provisioning/dashboards/executive
-          readOnly: true
-        - name: grafana-dashboard-engine-overview
-          mountPath: /etc/grafana/provisioning/dashboards/engine-overview
-          readOnly: true
-        - name: grafana-dashboard-intent-analytics
-          mountPath: /etc/grafana/provisioning/dashboards/intent-analytics
-          readOnly: true
-        - name: grafana-dashboard-langgraph-metrics
-          mountPath: /etc/grafana/provisioning/dashboards/langgraph-metrics
-          readOnly: true
-        - name: grafana-dashboard-ml-performance
-          mountPath: /etc/grafana/provisioning/dashboards/ml-performance
-          readOnly: true
+            - name: grafana-dashboard-executive
+              mountPath: /etc/grafana/provisioning/dashboards/executive
+              readOnly: true
+            - name: grafana-dashboard-engine-overview
+              mountPath: /etc/grafana/provisioning/dashboards/engine-overview
+              readOnly: true
+            - name: grafana-dashboard-intent-analytics
+              mountPath: /etc/grafana/provisioning/dashboards/intent-analytics
+              readOnly: true
+            - name: grafana-dashboard-langgraph-metrics
+              mountPath: /etc/grafana/provisioning/dashboards/langgraph-metrics
+              readOnly: true
+            - name: grafana-dashboard-ml-performance
+              mountPath: /etc/grafana/provisioning/dashboards/ml-performance
+              readOnly: true
       env:
         - name: GF_SECURITY_ADMIN_USER
           value: "admin"
