@@ -38,7 +38,7 @@ data:
   prometheus-datasource.yml: |
     apiVersion: 1
     datasources:
-      - name: Prometheus
+      - name: prometheus
         type: prometheus
         access: proxy
         url: http://prometheus.sasya-arogya.svc.cluster.local:9090 # OpenShift internal service
