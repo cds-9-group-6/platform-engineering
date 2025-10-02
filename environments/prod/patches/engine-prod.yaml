@@ -3,18 +3,18 @@ kind: Deployment
 metadata:
   name: engine
 spec:
-  replicas: 3
+  replicas: 1
   template:
     spec:
       containers:
       - name: engine
         resources:
           requests:
-            memory: "4Gi"
-            cpu: "1"
+            memory: "1Gi"
+            cpu: "250m"
           limits:
-            memory: "8Gi"
-            cpu: "4"
+            memory: "2Gi"
+            cpu: "1"
         env:
         - name: LOG_LEVEL
-          value: "INFO"
+          value: "DEBUG"

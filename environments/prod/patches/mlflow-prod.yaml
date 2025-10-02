@@ -3,18 +3,18 @@ kind: Deployment
 metadata:
   name: mlflow-server
 spec:
-  replicas: 2
+  replicas: 1
   template:
     spec:
       containers:
       - name: mlflow-server
         resources:
           requests:
+            cpu: 250m
+            memory: 500Mi
+          limits:
             cpu: 1
             memory: 2Gi
-          limits:
-            cpu: 4
-            memory: 8Gi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -23,4 +23,4 @@ metadata:
 spec:
   resources:
     requests:
-      storage: 10Gi  # Larger storage for prod
+      storage: 1Gi  # Same storage as dev
