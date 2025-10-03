@@ -1,0 +1,24 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: mcp-server
+  apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    name: mcp-server
+    labels:
+      app: mcp-server
+      app.kubernetes.io/component: mcp-server
+      app.kubernetes.io/instance: mcp-server
+      app.kubernetes.io/name: mcp-server
+      app.kubernetes.io/part-of: sasya-arogya
+    annotations:
+      haproxy.router.openshift.io/timeout: 5m
+  spec:
+    port:
+      targetPort: http
+    to:
+      kind: Service
+      name: mcp-server
+      weight: 100
+    wildcardPolicy: None
