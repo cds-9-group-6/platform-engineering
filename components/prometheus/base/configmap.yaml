@@ -25,7 +25,7 @@ data:
           - targets: ['otel-collector.sasya-arogya.svc.cluster.local:8889']
       - job_name: 'sasya-engine'
         static_configs:
-          - targets: ['engine.sasya-arogya.svc.cluster.local:8080'] # SASYA ENGINE port number
+          - targets: ['engine.sasya-arogya.svc.cluster.local:8080']
         scrape_interval: 15s
         metrics_path: /metrics
         scrape_timeout: 10s
