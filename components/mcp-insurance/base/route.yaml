@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: mcp-insurance
+  labels:
+    app: mcp-insurance
+    app.kubernetes.io/component: mcp-insurance
+    app.kubernetes.io/instance: mcp-insurance
+    app.kubernetes.io/name: mcp-insurance
+    app.kubernetes.io/part-of: sasya-arogya
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: mcp-insurance
+    weight: 100
+  wildcardPolicy: None

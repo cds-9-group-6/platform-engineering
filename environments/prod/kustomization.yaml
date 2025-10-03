@@ -13,6 +13,7 @@ resources:
   - ../../components/chromadb/base
   - ../../components/mlflow-tracking/base
   - ../../components/prescription/base
+  - ../../components/mcp-insurance/base
   - ../../components/otel-collector/base
   - ../../components/prometheus/base
   - ../../components/grafana/base
@@ -43,6 +44,8 @@ images:
     newTag: amd64-v1
   - name: quay.io/rajivranjan/prescription
     newTag: amd64-v1.1
+  - name: quay.io/rajivranjan/mcp-insurance
+    newTag: v1.0
   - name: otel/opentelemetry-collector-contrib
     newTag: latest
   - name: prom/prometheus

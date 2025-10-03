@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-insurance
+  labels:
+    app: mcp-insurance
+    app.kubernetes.io/component: mcp-insurance
+    app.kubernetes.io/instance: mcp-insurance
+    app.kubernetes.io/name: mcp-insurance
+    app.kubernetes.io/part-of: sasya-arogya
+    app.openshift.io/runtime: python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcp-insurance
+  template:
+    metadata:
+      labels:
+        app: mcp-insurance
+        app.kubernetes.io/component: mcp-insurance
+        app.kubernetes.io/name: mcp-insurance
+        deployment: mcp-insurance
+    spec:
+      securityContext:
+        runAsUser: 1000
+      containers:
+        - name: mcp-insurance
+          image: quay.io/rajivranjan/mcp-insurance:v1.0
+          securityContext:
+            runAsUser: 1000
+          ports:
+            - containerPort: 8001
+              protocol: TCP
+          env:
+            - name: HOST
+              value: "0.0.0.0"
+            - name: PORT
+              value: "8001"
+            - name: OLLAMA_HOST
+              value: http://ollama.sasya-arogya.svc.cluster.local:11434
+            - name: OLLAMA_MODEL
+              value: llama3.1:8b
+            - name: PYTHONUNBUFFERED
+              value: "1"
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
