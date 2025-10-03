@@ -19,3 +19,6 @@ data:
   MLFLOW_EXPERIMENT_NAME: "plant_disease_classification"
   MLFLOW_ARTIFACT_LOCATION: "/app/mlflow_artifacts"
   MLFLOW_REGISTRY_URI: "http://mlflow-server.sasya-arogya.svc.cluster.local:5001"
+  SASYA_AROGYA_MCP_URL: "http://mcp.sasya-arogya.svc.cluster.local:8001"
+  # TODO revisit the SASYA_AROGYA_MCP_URL
+  
