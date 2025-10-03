@@ -16,6 +16,7 @@ resources:
   - ../../components/otel-collector/base
   - ../../components/prometheus/base
   - ../../components/grafana/base
+  - ../../components/mcp/base
   - patches/engine-session-storage-pvc-prod.yaml
 
 commonLabels:
@@ -31,6 +32,7 @@ patchesStrategicMerge:
   - patches/otel-collector-prod.yaml
   - patches/prometheus-prod.yaml
   - patches/grafana-prod.yaml
+  - patches/mcp-prod.yaml
 
 images:
   - name: quay.io/rajivranjan/engine
@@ -49,3 +51,5 @@ images:
     newTag: latest
   - name: grafana/grafana-oss
     newTag: latest
+  - name: quay.io/rajivranjan/mcp-insurance
+    newTag: v1.0
