@@ -21,6 +21,9 @@ data:
   MLFLOW_REGISTRY_URI: "http://mlflow-server.sasya-arogya.svc.cluster.local:5001"
   SASYA_AROGYA_MCP_URL: "http://mcp-insurance.sasya-arogya.svc.cluster.local:8001"
 
+  # Fix protobuf compatibility issue with OpenTelemetry OTLP gRPC exporter
+  PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION: "python"
+
 
   OTEL_ENABLE_METRICS: "true"
   OTEL_ENABLE_TRACING: "true"
