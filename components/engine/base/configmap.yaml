@@ -22,19 +22,19 @@ data:
   SASYA_AROGYA_MCP_URL: "http://mcp-insurance.sasya-arogya.svc.cluster.local:8001"
 
   # Fix protobuf compatibility issue with OpenTelemetry OTLP gRPC exporter
-  PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION: "python"
+  # PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION: "python"
 
 
-  OTEL_ENABLE_METRICS: "true"
-  OTEL_ENABLE_TRACING: "true"
-  OTEL_SERVICE_NAME: "sasya-arogya-engine"
+  # OTEL_ENABLE_METRICS: "true"
+  # OTEL_ENABLE_TRACING: "true"
+  # OTEL_SERVICE_NAME: "sasya-arogya-engine"
   
-  OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector.sasya-arogya.svc.cluster.local:4317"
-  OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: "http://otel-collector.sasya-arogya.svc.cluster.local:4318/v1/traces"
-  OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: "http://otel-collector.sasya-arogya.svc.cluster.local:4318/v1/metrics"
-  OTEL_EXPORTER_OTLP_TRACES_PROTOCOL: "http/protobuf"
-  OTEL_EXPORTER_OTLP_METRICS_PROTOCOL: "http/protobuf"
-  OTEL_METRIC_EXPORT_INTERVAL: "10000"
-  OTEL_SERVICE_VERSION: "1.0.0"
+  # OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector.sasya-arogya.svc.cluster.local:4317"
+  # OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: "http://otel-collector.sasya-arogya.svc.cluster.local:4318/v1/traces"
+  # OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: "http://otel-collector.sasya-arogya.svc.cluster.local:4318/v1/metrics"
+  # OTEL_EXPORTER_OTLP_TRACES_PROTOCOL: "http/protobuf"
+  # OTEL_EXPORTER_OTLP_METRICS_PROTOCOL: "http/protobuf"
+  # OTEL_METRIC_EXPORT_INTERVAL: "10000"
+  # OTEL_SERVICE_VERSION: "1.0.0"
   # OTEL_ENABLE_AUTO_INSTRUMENTATION: "true"
   # ENVIRONMENT: "local"

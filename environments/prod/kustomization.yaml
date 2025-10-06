@@ -35,7 +35,7 @@ patchesStrategicMerge:
 
 images:
   - name: quay.io/rajivranjan/engine
-    newTag: amd64-v6.3
+    newTag: amd64-v6.4
   - name: quay.io/rajivranjan/ollama-multi-model
     newTag: linux-amd64-v1.0
   - name: quay.io/rajivranjan/chromadb-with-data-amd64
