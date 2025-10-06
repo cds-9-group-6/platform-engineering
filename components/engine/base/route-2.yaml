@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: engine-2
+  namespace: sasya-arogya
+spec:
+  host: engine-sasya-arogya.shailendra14k.in
+  path: /
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: engine
+    weight: 100
+  wildcardPolicy: None

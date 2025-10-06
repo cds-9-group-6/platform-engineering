@@ -9,7 +9,7 @@ resources:
   - deployment.yaml
   - service.yaml
   - route.yaml
-
+  - route-2.yaml
 commonLabels:
   app.kubernetes.io/version: v1.0.0
   app.kubernetes.io/managed-by: kustomize
