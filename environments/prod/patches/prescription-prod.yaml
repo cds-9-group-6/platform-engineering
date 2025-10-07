@@ -17,15 +17,15 @@ spec:
           effect: NoSchedule
       containers:
       - name: prescription
-        resources:
-          requests:
+        resources: {}
+          # requests:
             # memory: "4Gi"
             # cpu: "1"
-            nvidia.com/gpu: '1'
-          limits:
+            # nvidia.com/gpu: '1'
+          # limits:
             # memory: "8Gi"
             # cpu: "4"
-            nvidia.com/gpu: '1'
+            # nvidia.com/gpu: '1'
         env:
         - name: LOG_LEVEL
           value: "DEBUG"

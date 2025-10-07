@@ -416,7 +416,7 @@ For issues and questions:
 ```bash
 export OPENAI_API_KEY="sk-your-actual-openai-api-key-here"
 
-kubectl patch secret prescription-secrets \
+oc patch secret prescription-secrets \
   --type='json' \
   -p='[{"op": "replace", "path": "/data/openai-api-key", "value":"'$(echo -n "$OPENAI_API_KEY" | base64)'"}]' \
   --namespace=sasya-arogya
