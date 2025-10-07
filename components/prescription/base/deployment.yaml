@@ -56,6 +56,8 @@ spec:
             - name: MLFLOW_ACTIVE_MODEL_NAME
               value: llama318b_model
             # OpenTelemetry Configuration
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://otel-collector.sasya-arogya.svc.cluster.local:4317"
             - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
               value: "http://otel-collector.sasya-arogya.svc.cluster.local:4318/v1/traces"
             - name: OTEL_EXPORTER_OTLP_TRACES_PROTOCOL
