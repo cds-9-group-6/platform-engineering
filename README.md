@@ -410,3 +410,14 @@ For issues and questions:
 2. Review pod logs for application issues
 3. Validate Kustomize builds locally
 4. Check cluster resources and GPU availability (production)
+
+## Additonal note for system admin
+
+```bash
+export OPENAI_API_KEY="sk-your-actual-openai-api-key-here"
+
+kubectl patch secret prescription-secrets \
+  --type='json' \
+  -p='[{"op": "replace", "path": "/data/openai-api-key", "value":"'$(echo -n "$OPENAI_API_KEY" | base64)'"}]' \
+  --namespace=sasya-arogya
+  ```

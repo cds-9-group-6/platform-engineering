@@ -43,21 +43,72 @@ spec:
               value: http://ollama.sasya-arogya.svc.cluster.local:11434
             - name: OLLAMA_MODEL
               value: llama3.1:8b
+            - name: OLLAMA_BASE_URL
+              value: http://ollama.sasya-arogya.svc.cluster.local:11434/v1
             - name: MLFLOW_TRACKING_URI
               value: http://mlflow-server.sasya-arogya.svc.cluster.local:5001
             - name: MLFLOW_EXPERIMENT_NAME
-              value: plant_disease_classification
-            # - name: MLFLOW_ARTIFACT_LOCATION
-            #   value: ./mlflow_artifacts
+              value: llm_tracing_ollama
+            - name: MLFLOW_ARTIFACT_LOCATION
+              value: ./mlflow_artifacts
             - name: MLFLOW_REGISTRY_URI
               value: http://mlflow-server.sasya-arogya.svc.cluster.local:5001
-          resources:
-            requests:
-              memory: "4Gi"
-              cpu: "1"
-            limits:
-              memory: "8Gi"
-              cpu: "4"
+            - name: MLFLOW_ACTIVE_MODEL_NAME
+              value: llama318b_model
+            # OpenTelemetry Configuration
+            - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+              value: "http://otel-collector.sasya-arogya.svc.cluster.local:4318/v1/traces"
+            - name: OTEL_EXPORTER_OTLP_TRACES_PROTOCOL
+              value: "http/protobuf"
+            - name: OTEL_EXPORTER_OTLP_METRICS_ENDPOINT
+              value: "http://otel-collector.sasya-arogya.svc.cluster.local:4318/v1/metrics"
+            - name: OTEL_EXPORTER_OTLP_METRICS_PROTOCOL
+              value: "http/protobuf"
+            - name: OTEL_METRIC_EXPORT_INTERVAL
+              value: "10000"
+            - name: OTEL_SERVICE_NAME
+              value: "sasyaarogya"
+            - name: MLFLOW_TRACE_ENABLE_OTLP_DUAL_EXPORT
+              value: "false"
+            # MLflow Async Trace Logging Configuration
+            - name: MLFLOW_ENABLE_ASYNC_TRACE_LOGGING
+              value: "true"
+            - name: MLFLOW_ASYNC_TRACE_LOGGING_MAX_WORKERS
+              value: "10"
+            - name: MLFLOW_ASYNC_TRACE_LOGGING_MAX_QUEUE_SIZE
+              value: "1000"
+            - name: MLFLOW_TRACE_SAMPLING_RATIO
+              value: "1.0"
+            # Judge Model Configuration
+            - name: OPENAI_MODEL
+              value: "gpt-4"
+            - name: TEACHER_MODEL_TEMPERATURE
+              value: "0.6"
+            - name: TEACHER_MODEL_TOKEN_OUTPUT
+              value: "1500"
+            # # Application Configuration
+            # - name: LOG_LEVEL
+            #   value: "INFO"
+            # - name: DEBUG
+            #   value: "false"
+            # - name: API_PORT
+            #   value: "8081"
+            # - name: API_RELOAD
+            #   value: "false"
+            # OpenAI API Key (from secret)
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: prescription-secrets
+                  key: openai-api-key
+          resources: {}
+          # resources:
+          #   requests:
+          #     memory: "4Gi"
+          #     cpu: "1"
+          #   limits:
+          #     memory: "8Gi"
+          #     cpu: "4"
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
