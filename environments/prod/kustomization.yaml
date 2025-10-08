@@ -43,7 +43,7 @@ images:
   - name: quay.io/rajivranjan/mlflow-server
     newTag: amd64-v1
   - name: quay.io/rajivranjan/prescription
-    newTag: amd64-v1.5
+    newTag: amd64-v1.6
   - name: quay.io/rajivranjan/mcp-insurance
     newTag: v1.0
   - name: otel/opentelemetry-collector-contrib
