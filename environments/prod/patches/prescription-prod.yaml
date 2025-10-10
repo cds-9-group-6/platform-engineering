@@ -6,15 +6,6 @@ spec:
   replicas: 1
   template:
     spec:
-      tolerations:
-        - key: odh-notebook
-          operator: Equal
-          value: 'true'
-          effect: NoSchedule
-        - key: nvidia.com/gpu
-          operator: Equal
-          value: 'True'
-          effect: NoSchedule
       containers:
       - name: prescription
         resources: {}
