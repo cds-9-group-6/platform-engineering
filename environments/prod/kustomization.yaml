@@ -35,7 +35,7 @@ patchesStrategicMerge:
 
 images:
   - name: quay.io/rajivranjan/engine
-    newTag: amd64-v6.6
+    newTag: amd64-v6.7
   - name: quay.io/rajivranjan/ollama-multi-model
     newTag: linux-amd64-v1.0
   - name: quay.io/rajivranjan/chromadb-with-data-amd64
@@ -45,7 +45,7 @@ images:
   - name: quay.io/rajivranjan/prescription
     newTag: amd64-v1.7
   - name: quay.io/rajivranjan/mcp-insurance
-    newTag: v1.0
+    newTag: v1.1
   - name: otel/opentelemetry-collector-contrib
     newTag: latest
   - name: prom/prometheus
