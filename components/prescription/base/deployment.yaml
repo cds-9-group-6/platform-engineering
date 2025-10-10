@@ -71,7 +71,7 @@ spec:
             - name: OTEL_SERVICE_NAME
               value: "sasyaarogya"
             - name: MLFLOW_TRACE_ENABLE_OTLP_DUAL_EXPORT
-              value: "false"
+              value: "true"
             # MLflow Async Trace Logging Configuration
             - name: MLFLOW_ENABLE_ASYNC_TRACE_LOGGING
               value: "true"
@@ -82,10 +82,10 @@ spec:
             - name: MLFLOW_TRACE_SAMPLING_RATIO
               value: "1.0"
             # Judge Model Configuration
-            - name: OPENAI_MODEL
-              value: "gpt-3.5-turbo"
             # - name: OPENAI_MODEL
-            #   value: "gpt-4"
+            #   value: "gpt-3.5-turbo"
+            - name: OPENAI_MODEL
+              value: "gpt-4"
             - name: TEACHER_MODEL_TEMPERATURE
               value: "0.6"
             - name: TEACHER_MODEL_TOKEN_OUTPUT
