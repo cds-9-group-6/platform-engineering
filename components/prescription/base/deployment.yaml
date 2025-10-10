@@ -71,7 +71,7 @@ spec:
             - name: OTEL_SERVICE_NAME
               value: "sasyaarogya"
             - name: MLFLOW_TRACE_ENABLE_OTLP_DUAL_EXPORT
-              value: "true"
+              value: "false"
             # MLflow Async Trace Logging Configuration
             - name: MLFLOW_ENABLE_ASYNC_TRACE_LOGGING
               value: "true"
