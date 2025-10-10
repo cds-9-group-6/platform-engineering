@@ -11,10 +11,6 @@ spec:
           operator: Equal
           value: 'true'
           effect: NoSchedule
-        - key: nvidia.com/gpu
-          operator: Equal
-          value: 'True'
-          effect: NoSchedule
       containers:
       - name: ollama
         resources:
