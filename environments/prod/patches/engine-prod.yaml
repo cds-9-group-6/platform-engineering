@@ -8,13 +8,13 @@ spec:
     spec:
       containers:
       - name: engine
-        resources:
-          requests:
-            memory: "1Gi"
-            cpu: "250m"
-          limits:
-            memory: "2Gi"
-            cpu: "1"
+        resources: {}
+          # requests:
+          #   memory: "1Gi"
+          #   cpu: "250m"
+          # limits:
+          #   memory: "2Gi"
+          #   cpu: "1"
         env:
         - name: LOG_LEVEL
           value: "DEBUG"
